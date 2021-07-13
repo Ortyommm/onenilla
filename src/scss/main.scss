@@ -1,0 +1,17 @@
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+a {
+  color: $lightBlue;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+  //transform: translateY(-10px);
+}

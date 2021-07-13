@@ -8,6 +8,13 @@ a {
   color: $lightBlue;
 }
 
+h2 {
+  margin-top: 110px;
+  font-size: 50px;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
 .container {
   width: 1200px;
   margin: 0 auto;
@@ -17,7 +24,24 @@ a {
   display: none;
 }
 
+.text-container {
+  width: 830px;
+}
+
+.right-image {
+  margin-left: 130px;
+}
+
 .swiper-slide img {
   height: 400px;
   width: auto;
+}
+
+.swiper-container {
+  margin-top: 40px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
 }

@@ -18,7 +18,7 @@ import style from './About.module.scss'
 export default () => {
   return (
     <section id="about">
-      <div className={style.info}>
+      <div className="info">
         <div className="text-container">
           <h1 className={style.h1}>ONENILLA</h1>
           <p>
@@ -34,31 +34,29 @@ export default () => {
         <img src="/images/bee.gif" alt="Пчела" className="right-image" />
       </div>
 
-      <div className="swiper-out">
-        <Swiper
-          // spaceBetween={50}
+      <Swiper
+        // spaceBetween={50}
 
-          slidesPerView={1}
-          navigation={true}
-          pagination={{ clickable: true }}
-          autoplay={{
-            delay: 4000,
-            disableOnInteraction: false,
-          }}
-          speed={400}
-          height={400}
-        >
-          <SwiperSlide>
-            <img src="/images/slide1.jpg" alt="Приватный сервер" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="/images/slide2.jpg" alt="Приватный сервер" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="/images/slide3.jpg" alt="Добро пожаловать" />
-          </SwiperSlide>
-        </Swiper>
-      </div>
+        slidesPerView={1}
+        navigation={true}
+        pagination={{ clickable: true }}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
+        speed={400}
+        height={400}
+      >
+        <SwiperSlide>
+          <img src="/images/slide1.jpg" alt="Приватный сервер" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="/images/slide2.jpg" alt="Приватный сервер" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="/images/slide3.jpg" alt="Добро пожаловать" />
+        </SwiperSlide>
+      </Swiper>
     </section>
   )
 }

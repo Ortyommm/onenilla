@@ -3,7 +3,7 @@ import { Icon, InlineIcon } from '@iconify/react'
 import menuIcon from '@iconify/icons-whh/menu'
 
 import style from './Header.module.scss'
-import Menu from '../Status/Menu'
+import Menu from './Menu'
 
 function animateFall(el: HTMLElement) {
   setInterval((el) => {

@@ -1,1 +1,67 @@
 @import 'src/scss/variables';
+
+$playersHeight: 110px;
+
+.players {
+  height: $playersHeight;
+  width: 100%;
+  background-color: $whiteBlue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 50px;
+  font-size: 50px;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.player {
+  @extend .players;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.4s;
+  visibility: hidden;
+  //position: relative;
+  &.active {
+    visibility: visible;
+    display: block;
+    height: $playersHeight;
+  }
+}
+
+.expand_btn {
+  font-size: 84px;
+  cursor: pointer;
+}
+
+.player_head {
+  width: 60px;
+  margin: 0 20px;
+}
+
+.players_left {
+}
+
+.players_right {
+}
+
+.players_count {
+  font-weight: 600;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: #db3d33;
+  margin-left: 20px;
+  &.online {
+    background-color: #85c248;
+  }
+}
+
+.player_names {
+}

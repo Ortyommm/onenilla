@@ -979,6 +979,11 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.3.tgz#90420f9f9c6d3987f176a19a7d8e764271a2f55d"
   integrity sha512-Fxt+AfXgjMoin2maPIYzFZnQjAXjAL0PHscM5pRTtatFqB+vZxAM9tLp2Optnuw3QOQC40jTNeGYFOMvyf7v9g==
 
+"@iconify/icons-ic@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-ic/-/icons-ic-1.1.7.tgz#ddd214f471b647e75ef1826fe69d2d01f43aa0a4"
+  integrity sha512-bNABWmzSnwEV5y141KX0uuBl1cm2WjxWo/BoPX3j73sZ/9e+/mfJu3DB5DaPas2x7tjXj95r+eVMEJavllmHCA==
+
 "@iconify/icons-whh@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@iconify/icons-whh/-/icons-whh-1.1.0.tgz#09949571e6df618988e2384b77d9aa3a26ecd46b"

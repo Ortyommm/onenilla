@@ -1,4 +1,4 @@
-import style from '../Header/Header.module.scss'
+import style from './Header.module.scss'
 import { Icon } from '@iconify/react'
 import infosignIcon from '@iconify/icons-whh/infosign'
 import skypeonlineIcon from '@iconify/icons-whh/skypeonline'

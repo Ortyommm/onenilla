@@ -1,5 +1,7 @@
 body {
   font-family: 'Raleway', sans-serif;
+  overflow-x: hidden;
+  color: $mainBlack;
 }
 
 a {
@@ -13,5 +15,9 @@ a {
 
 .hidden {
   display: none;
-  //transform: translateY(-10px);
+}
+
+.swiper-slide img {
+  height: 400px;
+  width: auto;
 }

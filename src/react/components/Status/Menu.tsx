@@ -8,13 +8,14 @@ import React from 'react'
 
 interface mobileMenuProps {
   mobileMenu?: React.Ref<any>
+  classEl?: string
 }
-// /${style.animate_fall
-const Menu = ({ mobileMenu }: mobileMenuProps) => {
+
+const Menu = ({ mobileMenu, classEl }: mobileMenuProps) => {
   return (
     <div
       ref={mobileMenu || null}
-      className={mobileMenu ? `hidden ` : undefined}
+      className={mobileMenu && classEl ? classEl : undefined}
     >
       <div className={style.menu_item}>
         <a href="" className={style.nav_link}>

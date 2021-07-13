@@ -1,47 +1,44 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Icon, InlineIcon } from '@iconify/react'
 import menuIcon from '@iconify/icons-whh/menu'
 
 import style from './Header.module.scss'
 import Menu from '../Status/Menu'
 
+function animateFall(el: HTMLElement) {
+  setInterval((el) => {
+    el.style.transform.translateY = parseInt(getComputedStyle(el).transform) - 5
+  }, 100)
+}
+
 export default () => {
   const mobileMenu = useRef()
-  function onMenuClick(e: React.MouseEvent) {
-    const isVisible = !(
-      mobileMenu.current! as HTMLDivElement
-    ).classList.contains('hidden')
-    console.log(
-      'содержит hidden',
-      (mobileMenu.current! as HTMLDivElement).classList.contains('hidden')
-    )
+  const [isVisible, setIsVisible] = useState(false)
+  const [className, setClassName] = useState('hidden')
+  const [isClicked, setIsClicked] = useState(false)
+
+  function onMenuClick(e: React.MouseEvent | Event) {
+    setIsClicked(true)
     if (isVisible) {
-      ;(mobileMenu.current! as HTMLDivElement).classList.add(
-        `${style.animate_up}`
-      )
+      setClassName(style.animate_up)
       ;(mobileMenu.current! as HTMLDivElement).addEventListener(
         'animationend',
         () => {
-          ;(mobileMenu.current! as HTMLDivElement).classList.add(`hidden`)
-          ;(mobileMenu.current! as HTMLDivElement).classList.remove(
-            `${style.animate_up}`
-          )
+          setClassName('hidden')
+          setIsClicked(false)
         }
       )
+      setIsVisible(false)
     } else {
-      ;(mobileMenu.current! as HTMLDivElement).classList.remove(`hidden`)
-      ;(mobileMenu.current! as HTMLDivElement).classList.add(
-        `${style.animate_fall}`
-      )
+      setClassName(style.animate_fall)
       ;(mobileMenu.current! as HTMLDivElement).addEventListener(
         'animationend',
         () => {
-          ;(mobileMenu.current! as HTMLDivElement).classList.remove(`hidden`)
-          ;(mobileMenu.current! as HTMLDivElement).classList.remove(
-            `${style.animate_fall}`
-          )
+          setClassName('')
+          setIsClicked(false)
         }
       )
+      setIsVisible(true)
     }
   }
 
@@ -52,7 +49,10 @@ export default () => {
           <nav className={style.desktop_nav}>
             <Menu />
           </nav>
-          <div className={style.mobile_nav} onClick={onMenuClick}>
+          <div
+            className={style.mobile_nav}
+            onClick={isClicked ? undefined : onMenuClick}
+          >
             <Icon
               icon={menuIcon}
               style={{ color: '#ffffff', fontSize: '30px' }}
@@ -61,7 +61,7 @@ export default () => {
         </div>
       </header>
       <div className={style.mobile_menu}>
-        <Menu mobileMenu={mobileMenu} />
+        <Menu mobileMenu={mobileMenu} classEl={className} />
       </div>
     </>
   )

@@ -21,11 +21,7 @@ export default ({ players }: Players) => {
   const playerNames = useRef() as React.MutableRefObject<HTMLDivElement>
   function onExpandClick(e: React.MouseEvent) {
     // ;(playerNames.current! as HTMLDivElement).classList.toggle('hidden')
-    Array.from((playerNames.current! as HTMLDivElement).children).forEach(
-      (name: Element) => {
-        name.classList.toggle(style.active)
-      }
-    )
+    ;(playerNames.current! as HTMLDivElement).classList.toggle(style.active)
   }
 
   return (
@@ -48,13 +44,10 @@ export default ({ players }: Players) => {
           <div className={`${style.circle} ${style.online}`}></div>
         </div>
       </div>
-      <div
-        className={`${style.player_names}`}
-        ref={playerNames}
-        style={{ overflow: 'hidden', height: 0 }}
-      >
+      <div className={`${style.player_names}`} ref={playerNames}>
         {playersArr}
       </div>
+      adsdas
     </section>
   )
 }

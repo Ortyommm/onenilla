@@ -20,16 +20,15 @@ $playersHeight: 110px;
 
 .player {
   @extend .players;
-  height: 0;
+  //height: 0;
   overflow: hidden;
   transition: height 0.4s;
-  visibility: hidden;
+
   //position: relative;
-  &.active {
-    visibility: visible;
-    display: block;
-    height: $playersHeight;
-  }
+  //&.active {
+  //  display: block;
+  //  height: $playersHeight;
+  //}
 }
 
 .expand_btn {
@@ -64,4 +63,11 @@ $playersHeight: 110px;
 }
 
 .player_names {
+  overflow: hidden;
+  height: 0;
+  transition: height 0.5s;
+  &.active {
+    height: $playersHeight * 3;
+    overflow-y: auto;
+  }
 }

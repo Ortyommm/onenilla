@@ -93,6 +93,9 @@ video {
 a {
   text-decoration: none;
 }
+button {
+  border: none;
+}
 article,
 aside,
 details,
@@ -131,5 +134,8 @@ q:before,
 q:after {
   content: '';
   content: none;
+}
+* {
+  outline: none;
 }
 /* конец кода сброса стилей браузера */

@@ -4,7 +4,12 @@ import About from './components/About/About'
 import Status from './components/Status/Status'
 import Play from './components/Play/Play'
 
-const players = [{ nickname: 'John' }, { nickname: 'Phoenixraine' }]
+const players = [
+  { nickname: 'John' },
+  { nickname: 'Phoenixraine' },
+  { nickname: 'Jsalient' },
+  { nickname: 'Jsalient' },
+]
 
 const App = () => {
   return (

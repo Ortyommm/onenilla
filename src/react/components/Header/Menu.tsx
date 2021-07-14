@@ -1,10 +1,7 @@
 import style from './Header.module.scss'
-import { Icon } from '@iconify/react'
-import infosignIcon from '@iconify/icons-whh/infosign'
-import skypeonlineIcon from '@iconify/icons-whh/skypeonline'
-import gameboyIcon from '@iconify/icons-whh/gameboy'
-import lawIcon from '@iconify/icons-whh/law'
+
 import React from 'react'
+import LinkTo from './LinkTo'
 
 interface mobileMenuProps {
   mobileMenu?: React.Ref<any>
@@ -17,30 +14,10 @@ const Menu = ({ mobileMenu, classEl }: mobileMenuProps) => {
       ref={mobileMenu || null}
       className={mobileMenu && classEl ? classEl : undefined}
     >
-      <div className={style.menu_item}>
-        <a href="" className={style.nav_link}>
-          <Icon icon={infosignIcon} />
-          <span>О сервере</span>
-        </a>
-      </div>{' '}
-      <div className={style.menu_item}>
-        <a href="" className={style.nav_link}>
-          <Icon icon={skypeonlineIcon} />
-          <span>Состояние сервера</span>
-        </a>
-      </div>{' '}
-      <div className={style.menu_item}>
-        <a href="" className={style.nav_link}>
-          <Icon icon={gameboyIcon} />
-          <span>Играть!</span>
-        </a>
-      </div>
-      <div className={style.menu_item}>
-        <a href="" className={style.nav_link}>
-          <Icon icon={lawIcon} />
-          <span>Жалоба на игрока</span>
-        </a>
-      </div>
+      <LinkTo to="about" text="О сервере" />
+      <LinkTo to="status" text="Состояние сервера" />
+      <LinkTo to="play" text="Играть!" />
+      <LinkTo to="status" text="Жалоба на игрока" />
     </div>
   )
 }

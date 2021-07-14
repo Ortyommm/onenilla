@@ -25,29 +25,33 @@ export default ({ players }: Players) => {
   }
 
   return (
-    <section id="status">
-      <h2>Состояние сервера</h2>
-      <div className={style.players}>
-        <div className={style.players_left}>
-          <img
-            src="/images/steve-head.jpg"
-            alt="игрок"
-            className={style.player_head}
-          />
-          <span className={style.players_count}>2/100</span>
-          <div className={style.expand_btn} onClick={onExpandClick}>
-            <Icon icon={outlineExpandMore} />
+    <>
+      <section id="status">
+        <h2>Состояние сервера</h2>
+        <div className="text-container">
+          Сервер сейчас работает, на нём играет 2 игрока.
+        </div>
+        <div className={style.players}>
+          <div className={style.players_left}>
+            <img
+              src="/images/steve-head.jpg"
+              alt="игрок"
+              className={style.player_head}
+            />
+            <span className={style.players_count}>2/100</span>
+            <div className={style.expand_btn} onClick={onExpandClick}>
+              <Icon icon={outlineExpandMore} />
+            </div>
+          </div>
+          <div className={style.players_right}>
+            online
+            <div className={`${style.circle} ${style.online}`}></div>
           </div>
         </div>
-        <div className={style.players_right}>
-          online
-          <div className={`${style.circle} ${style.online}`}></div>
+        <div className={`${style.player_names}`} ref={playerNames}>
+          {playersArr}
         </div>
-      </div>
-      <div className={`${style.player_names}`} ref={playerNames}>
-        {playersArr}
-      </div>
-      adsdas
-    </section>
+      </section>
+    </>
   )
 }

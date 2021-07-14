@@ -2,7 +2,7 @@
 
 $playersHeight: 110px;
 
-.players {
+%player_common {
   height: $playersHeight;
   width: 100%;
   background-color: $whiteBlue;
@@ -11,6 +11,15 @@ $playersHeight: 110px;
   justify-content: space-between;
   padding: 5px 50px;
   font-size: 50px;
+  div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.players {
+  margin-top: 20px;
+  @extend %player_common;
 
   div {
     display: flex;
@@ -19,16 +28,10 @@ $playersHeight: 110px;
 }
 
 .player {
-  @extend .players;
-  //height: 0;
+  @extend %player_common;
+
   overflow: hidden;
   transition: height 0.4s;
-
-  //position: relative;
-  //&.active {
-  //  display: block;
-  //  height: $playersHeight;
-  //}
 }
 
 .expand_btn {
@@ -66,6 +69,8 @@ $playersHeight: 110px;
   overflow: hidden;
   height: 0;
   transition: height 0.5s;
+  background-color: $whiteBlue;
+
   &.active {
     height: $playersHeight * 3;
     overflow-y: auto;

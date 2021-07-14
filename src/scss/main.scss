@@ -6,13 +6,21 @@ body {
 
 a {
   color: $lightBlue;
+  cursor: pointer;
+}
+
+section {
+  margin-bottom: 110px;
+}
+
+#play {
+  margin-bottom: 30px;
 }
 
 h2 {
-  margin-top: 110px;
   font-size: 50px;
   font-weight: 800;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .container {
@@ -26,10 +34,18 @@ h2 {
 
 .text-container {
   width: 830px;
+  font-size: 18px;
 }
 
 .right-image {
   margin-left: 130px;
+  &.bee {
+    width: 170px;
+  }
+  &.piglin {
+    width: 220px;
+    align-self: flex-end;
+  }
 }
 
 .swiper-slide img {

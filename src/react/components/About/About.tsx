@@ -17,46 +17,50 @@ import style from './About.module.scss'
 
 export default () => {
   return (
-    <section id="about">
-      <div className="info">
-        <div className="text-container">
-          <h1 className={style.h1}>ONENILLA</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus in
-            fames volutpat interdum aliquet. Magna sed eu diam nulla diam mattis
-            aenean mauris, vel. Dui, pellentesque pharetra, pulvinar eu, quam
-            eros hendrerit. Tellus odio fermentum consequat elit vestibulum.
-            Aliquam sed et vel ut ac nec in tempus. Vestibulum consequat arcu
-            tortor in amet, egestas sem vitae. Sed ac non, molestie.
-          </p>
+    <>
+      <section id="about">
+        <div className="info">
+          <div className="text-container">
+            <h1 className={style.h1}>ONENILLA</h1>
+            <p>
+              Мы - приватный Minecraft сервер. Наш проект - это мирное
+              выживание, развитие, торговля и творчество в основном мире и
+              бесконечная война на втором дополнительном PVP мире. У нас нет
+              китов, приватов, привилегий, влияющих на игровой процесс, и прочих
+              аспектов обычного сервера Minecraft. На нашем сервере есть
+              уникальные механики и новые зачарования, которые разнообразят ваш
+              геймплей, более 700 новых достижений, уникальные события и ивенты.
+              Мы - <strong>OneNilla</strong>.
+            </p>
+          </div>
+
+          <img src="/images/bee.gif" alt="Пчела" className="right-image bee" />
         </div>
 
-        <img src="/images/bee.gif" alt="Пчела" className="right-image" />
-      </div>
+        <Swiper
+          // spaceBetween={50}
 
-      <Swiper
-        // spaceBetween={50}
-
-        slidesPerView={1}
-        navigation={true}
-        pagination={{ clickable: true }}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
-        speed={400}
-        height={400}
-      >
-        <SwiperSlide>
-          <img src="/images/slide1.jpg" alt="Приватный сервер" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/slide2.jpg" alt="Приватный сервер" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/slide3.jpg" alt="Добро пожаловать" />
-        </SwiperSlide>
-      </Swiper>
-    </section>
+          slidesPerView={1}
+          navigation={true}
+          pagination={{ clickable: true }}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
+          speed={400}
+          height={400}
+        >
+          <SwiperSlide>
+            <img src="/images/slide1.jpg" alt="Приватный сервер" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/images/slide2.jpg" alt="Приватный сервер" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/images/slide3.jpg" alt="Добро пожаловать" />
+          </SwiperSlide>
+        </Swiper>
+      </section>
+    </>
   )
 }

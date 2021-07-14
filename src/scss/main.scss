@@ -11,6 +11,9 @@ a {
 
 section {
   margin-bottom: 110px;
+  @media (max-width: 700px) {
+    margin-bottom: 60px;
+  }
 }
 
 #play {
@@ -26,6 +29,33 @@ h2 {
 .container {
   width: 1200px;
   margin: 0 auto;
+  @media (max-width: 1200px) {
+    width: 1000px;
+  }
+  @media (max-width: 1000px) {
+    width: 850px;
+  }
+  @media (max-width: 850px) {
+    width: 700px;
+  }
+  @media (max-width: 700px) {
+    width: 650px;
+  }
+  @media (max-width: 650px) {
+    width: 550px;
+  }
+  @media (max-width: 550px) {
+    width: 500px;
+  }
+  @media (max-width: 500px) {
+    width: 450px;
+  }
+  @media (max-width: 450px) {
+    width: 400px;
+  }
+  @media (max-width: 400px) {
+    width: 320px;
+  }
 }
 
 .hidden {
@@ -33,24 +63,33 @@ h2 {
 }
 
 .text-container {
-  width: 830px;
-  font-size: 18px;
+  width: 100%;
+  font-size: 22px;
+  padding: 0 5px;
+  @media (max-width: 850px) {
+    width: 100%;
+  }
 }
 
 .right-image {
-  margin-left: 130px;
+  margin-left: 40px;
+  padding-right: 40px;
   &.bee {
-    width: 170px;
+    width: 180px;
   }
   &.piglin {
     width: 220px;
     align-self: flex-end;
   }
+  @media (max-width: 850px) {
+    display: none;
+  }
 }
 
 .swiper-slide img {
-  height: 400px;
-  width: auto;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
 .swiper-container {

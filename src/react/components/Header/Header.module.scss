@@ -5,12 +5,10 @@
   background-color: #4d6eb5;
   display: flex;
   align-items: center;
-  margin-bottom: 50px;
 }
 
 .desktop_nav div {
   display: flex;
-  justify-content: space-around;
   font-size: 28px;
   @media (max-width: 1230px) {
     font-size: 25px;
@@ -29,10 +27,22 @@
   }
 }
 
+.links {
+  display: flex;
+  flex: 1.6;
+  justify-content: space-around;
+}
+
+.modals {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  padding-right: 20px;
+}
+
 .mobile_nav {
   display: none;
   margin-right: 20px;
-  z-index: 2000;
   position: relative;
   z-index: 9999;
   @media (max-width: 600px) {

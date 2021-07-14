@@ -14,10 +14,14 @@ const Menu = ({ mobileMenu, classEl }: mobileMenuProps) => {
       ref={mobileMenu || null}
       className={mobileMenu && classEl ? classEl : undefined}
     >
-      <LinkTo to="about" text="О сервере" />
-      <LinkTo to="status" text="Состояние сервера" />
-      <LinkTo to="play" text="Играть!" />
-      <LinkTo to="status" text="Жалоба на игрока" />
+      <div className={style.links}>
+        <LinkTo to="about" text="О сервере" />
+        <LinkTo to="status" text="Состояние сервера" />
+        <LinkTo to="play" text="Играть!" />
+      </div>
+      <div className={style.modals}>
+        <LinkTo to="status" text="Жалоба на игрока" />
+      </div>
     </div>
   )
 }

@@ -34,7 +34,13 @@ export default () => {
             </p>
           </div>
 
-          <img src="/images/bee.gif" alt="Пчела" className="right-image bee" />
+          {window.screen.availWidth > 850 ? (
+            <img
+              src="/images/bee.gif"
+              alt="Пчела"
+              className="right-image bee"
+            />
+          ) : null}
         </div>
 
         <Swiper

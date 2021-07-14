@@ -18,16 +18,19 @@ export default () => {
               продавцу".
             </p>
           </div>
-
-          <img
-            src="/images/piglin.gif"
-            alt="Пиглин"
-            className="right-image piglin"
-          />
+          {window.screen.availWidth > 850 ? (
+            <img
+              src="/images/piglin.gif"
+              alt="Пиглин"
+              className="right-image piglin"
+            />
+          ) : null}
         </div>
       </section>
       <section id="products">
-        <h2>Товары</h2>
+        <div className="text-container">
+          <h2>Товары</h2>
+        </div>
         <div className={style.products}>
           <Product
             imgSrc="/images/onenilla-logo.jpg"
@@ -45,7 +48,7 @@ export default () => {
           />
           <Product
             imgSrc="/images/onenilla-logo.jpg"
-            title="Проходка на сервер"
+            title="Цветной никнейм"
             price={35}
             btnText="Поддержать сервер!"
             btnHref="https://vk.com/onenilla?w=product-195910351_5601028%2Fquery"

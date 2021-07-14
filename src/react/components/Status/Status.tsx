@@ -27,8 +27,8 @@ export default ({ players }: Players) => {
   return (
     <>
       <section id="status">
-        <h2>Состояние сервера</h2>
         <div className="text-container">
+          <h2>Состояние сервера</h2>
           Сервер сейчас работает, на нём играет 2 игрока.
         </div>
         <div className={style.players}>

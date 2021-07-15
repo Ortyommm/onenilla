@@ -26,14 +26,19 @@ export default () => {
               проходку администрация сервера. Для этого нажмите "Написать
               продавцу". По вашему желанию вас могут добавить в приватную беседу
               игроков. Вы также можете сами зайти в{' '}
-              <a href="https://discord.gg/mq4ayYUgCS" target="_blank">
+              <a
+                href="https://discord.gg/mq4ayYUgCS"
+                target="_blank"
+                className="link"
+              >
                 наш Discord.
               </a>{' '}
-              IP:{' '}
+              Скопировать IP:{' '}
               <div className={style.copy_to_clipboard__wrapper}>
                 <strong
                   onClick={onCopyClick}
                   className={style.copy_to_clipboard}
+                  title="Скопировать адрес"
                 >
                   onenilla.joinserver.xyz
                 </strong>
@@ -66,14 +71,14 @@ export default () => {
             btnHref="https://vk.com/onenilla?w=product-195910351_4891471%2Fquery"
           />
           <Product
-            imgSrc="/images/pics/onenilla-logo.jpg"
+            imgSrc="/images/pics/onenilla-logo-diamonds.png"
             title="Саппорт сервера"
             price={165}
             btnText="Поддержать сервер!"
             btnHref="https://vk.com/onenilla?w=product-195910351_5623553%2Fquery"
           />
           <Product
-            imgSrc="/images/pics/onenilla-logo.jpg"
+            imgSrc="/images/pics/onenilla-logo-gold.png"
             title="Цветной никнейм"
             price={35}
             btnText="Поддержать сервер!"

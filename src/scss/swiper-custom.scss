@@ -1,0 +1,16 @@
+.swiper-slide img,
+.swiper-slide picture {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.swiper-container {
+  margin-top: 40px;
+  @media (max-width: 600px) {
+    .swiper-button-prev,
+    .swiper-button-next {
+      transform: scale(0.5);
+    }
+  }
+}

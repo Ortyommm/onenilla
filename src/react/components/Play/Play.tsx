@@ -33,6 +33,8 @@ export default () => {
               >
                 наш Discord.
               </a>{' '}
+            </p>
+            <div className={style.ip}>
               Скопировать IP:{' '}
               <div className={style.copy_to_clipboard__wrapper}>
                 <strong
@@ -47,7 +49,7 @@ export default () => {
                 </div>
               </div>
               .
-            </p>
+            </div>
           </div>
           {window.screen.availWidth > 850 ? (
             <img

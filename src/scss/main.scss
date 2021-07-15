@@ -8,11 +8,9 @@ body {
 @keyframes append {
   0% {
     opacity: 0;
-    //transform: translateX(-100%);
   }
   100% {
     opacity: 1;
-    //transform: translateX(0);
   }
 }
 
@@ -100,10 +98,6 @@ h2 {
   }
 }
 
-.hidden {
-  display: none;
-}
-
 .text-container {
   width: 100%;
   font-size: 22px;
@@ -134,22 +128,11 @@ h2 {
   }
 }
 
-.swiper-slide img,
-.swiper-slide picture {
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
-}
-
-.swiper-container {
-  margin-top: 40px;
-  .swiper-button-prev,
-  .swiper-button-next {
-    transform: scale(0.5);
-  }
-}
-
 .info {
   display: flex;
   align-items: center;
+}
+
+.hidden {
+  display: none;
 }

@@ -28,7 +28,7 @@ const Status = ({
   const expandRef = useRef() as React.MutableRefObject<HTMLImageElement>
   let clicked = false
   function onExpandClick(e: React.MouseEvent) {
-    if (!online) return
+    if (!online || players.now === 0) return
     ;(playerNames.current! as HTMLDivElement).classList.toggle(style.active)
 
     expandRef.current.style.transform = clicked

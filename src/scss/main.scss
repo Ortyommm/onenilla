@@ -2,6 +2,18 @@ body {
   font-family: 'Raleway', sans-serif;
   overflow-x: hidden;
   color: $mainBlack;
+  animation: append 0.4s;
+}
+
+@keyframes append {
+  0% {
+    opacity: 0;
+    //transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    //transform: translateX(0);
+  }
 }
 
 a {
@@ -10,7 +22,7 @@ a {
 }
 
 section {
-  margin-bottom: 110px;
+  margin-bottom: 130px;
   @media (max-width: 700px) {
     margin-bottom: 60px;
   }
@@ -24,6 +36,16 @@ h2 {
   font-size: 50px;
   font-weight: 800;
   margin-bottom: 20px;
+  @media (max-width: 850px) {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  @media (max-width: 650px) {
+    font-size: 35px;
+  }
+  @media (max-width: 400px) {
+    font-size: 30px;
+  }
 }
 
 .container {
@@ -66,8 +88,14 @@ h2 {
   width: 100%;
   font-size: 22px;
   padding: 0 5px;
-  @media (max-width: 850px) {
-    width: 100%;
+  @media (max-width: 1000px) {
+    font-size: 20px;
+  }
+  @media (max-width: 800px) {
+    font-size: 18px;
+  }
+  @media (max-width: 600px) {
+    font-size: 16px;
   }
 }
 
@@ -86,7 +114,8 @@ h2 {
   }
 }
 
-.swiper-slide img {
+.swiper-slide img,
+.swiper-slide picture {
   height: 100%;
   width: 100%;
   object-fit: contain;
@@ -94,6 +123,10 @@ h2 {
 
 .swiper-container {
   margin-top: 40px;
+  .swiper-button-prev,
+  .swiper-button-next {
+    transform: scale(0.5);
+  }
 }
 
 .info {

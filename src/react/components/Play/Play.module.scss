@@ -13,7 +13,6 @@
   transform-style: preserve-3d;
   padding: 0 5px;
 }
-
 .product_card {
   width: 330px;
   height: 460px;
@@ -52,7 +51,7 @@
     height: 535px;
   }
   @media (max-width: 400px) {
-    height: 455px;
+    height: 445px;
   }
 }
 
@@ -128,4 +127,22 @@
   &:focus {
     box-shadow: 0px 0px 8px 2px #2a4b92;
   }
+}
+
+.copy_to_clipboard__wrapper {
+  display: inline-block;
+}
+
+.copy_message {
+  display: none;
+  position: absolute;
+  padding: 5px;
+  margin-top: 5px;
+  background: #fafafa;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.copy_to_clipboard {
+  cursor: pointer;
 }

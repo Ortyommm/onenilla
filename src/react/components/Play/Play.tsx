@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { MutableRefObject, useRef } from 'react'
 import style from './Play.module.scss'
 import Product from './Product'
+import copy from 'copy-to-clipboard'
 
 export default () => {
+  const copyMessageRef = useRef() as MutableRefObject<HTMLDivElement>
+  function onCopyClick(e: React.MouseEvent) {
+    copy('onenilla.joinserver.xyz')
+    copyMessageRef.current.style.display = 'block'
+    setTimeout(() => {
+      copyMessageRef.current.style.display = 'none'
+    }, 1000)
+  }
   return (
     <>
       <section id="play">
@@ -15,12 +24,29 @@ export default () => {
               открывается к нему доступ. Приобрести её можно, перейдя в раздел
               товары ниже. Вы будете переадресованы в VK, где вам предоставит
               проходку администрация сервера. Для этого нажмите "Написать
-              продавцу".
+              продавцу". По вашему желанию вас могут добавить в приватную беседу
+              игроков. Вы также можете сами зайти в{' '}
+              <a href="https://discord.gg/mq4ayYUgCS" target="_blank">
+                наш Discord.
+              </a>{' '}
+              IP:{' '}
+              <div className={style.copy_to_clipboard__wrapper}>
+                <strong
+                  onClick={onCopyClick}
+                  className={style.copy_to_clipboard}
+                >
+                  onenilla.joinserver.xyz
+                </strong>
+                <div className={style.copy_message} ref={copyMessageRef}>
+                  Вы скопировали адрес!
+                </div>
+              </div>
+              .
             </p>
           </div>
           {window.screen.availWidth > 850 ? (
             <img
-              src="/images/piglin.gif"
+              src="/images/pics/piglin.gif"
               alt="Пиглин"
               className="right-image piglin"
             />
@@ -33,21 +59,21 @@ export default () => {
         </div>
         <div className={style.products}>
           <Product
-            imgSrc="/images/onenilla-logo.jpg"
+            imgSrc="/images/pics/onenilla-logo.jpg"
             title="Проходка на сервер"
             price={45}
             btnText="Начать играть!"
             btnHref="https://vk.com/onenilla?w=product-195910351_4891471%2Fquery"
           />
           <Product
-            imgSrc="/images/onenilla-logo.jpg"
+            imgSrc="/images/pics/onenilla-logo.jpg"
             title="Саппорт сервера"
             price={165}
             btnText="Поддержать сервер!"
             btnHref="https://vk.com/onenilla?w=product-195910351_5623553%2Fquery"
           />
           <Product
-            imgSrc="/images/onenilla-logo.jpg"
+            imgSrc="/images/pics/onenilla-logo.jpg"
             title="Цветной никнейм"
             price={35}
             btnText="Поддержать сервер!"

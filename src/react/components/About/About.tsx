@@ -30,13 +30,13 @@ export default () => {
               аспектов обычного сервера Minecraft. На нашем сервере есть
               уникальные механики и новые зачарования, которые разнообразят ваш
               геймплей, более 700 новых достижений, уникальные события и ивенты.
-              Мы - <strong>OneNilla</strong>.
+              Мы - <strong>OneNilla</strong>.{' '}
             </p>
           </div>
 
           {window.screen.availWidth > 850 ? (
             <img
-              src="/images/bee.gif"
+              src="/images/pics/bee.gif"
               alt="Пчела"
               className="right-image bee"
             />
@@ -57,13 +57,13 @@ export default () => {
           height={400}
         >
           <SwiperSlide>
-            <img src="/images/slide1.jpg" alt="Приватный сервер" />
+            <img src="/images/pics/slide1.jpg" alt="Приватный сервер" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="/images/slide2.jpg" alt="Приватный сервер" />
+            <img src="/images/pics/slide2.jpg" alt="Приватный сервер" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="/images/slide3.jpg" alt="Добро пожаловать" />
+            <img src="/images/pics/slide3.jpg" alt="Добро пожаловать" />
           </SwiperSlide>
         </Swiper>
       </section>

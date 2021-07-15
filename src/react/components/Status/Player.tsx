@@ -6,7 +6,7 @@ export default ({ nickname }: { nickname: string }) => {
     <div className={`${style.player} `}>
       <div className={style.players_left}>
         <img
-          src="/images/steve-head.jpg"
+          src="/images/pics/steve-head.jpg"
           alt="игрок"
           className={style.player_head}
         />

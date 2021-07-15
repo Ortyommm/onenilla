@@ -1,67 +1,83 @@
-import React, { useRef, useState } from 'react'
-import { Icon, InlineIcon } from '@iconify/react'
-import menuIcon from '@iconify/icons-whh/menu'
+import React, { MutableRefObject, useEffect, useRef, useState } from 'react'
 
 import style from './Header.module.scss'
 import Menu from './Menu'
 
-function animateFall(el: HTMLElement) {
-  setInterval((el) => {
-    el.style.transform.translateY = parseInt(getComputedStyle(el).transform) - 5
-  }, 100)
-}
-
 export default () => {
-  const mobileMenu = useRef()
-  const [isVisible, setIsVisible] = useState(false)
-  const [className, setClassName] = useState('hidden')
-  const [isClicked, setIsClicked] = useState(false)
+  const mobileMenuRef = useRef() as MutableRefObject<HTMLDivElement>
+  const IconRef = useRef() as MutableRefObject<HTMLImageElement>
+  const headerRef = useRef() as MutableRefObject<HTMLElement>
+  const headerWrapperRef = useRef() as MutableRefObject<HTMLDivElement>
 
-  function onMenuClick(e: React.MouseEvent | Event) {
-    setIsClicked(true)
-    if (isVisible) {
-      setClassName(style.animate_up)
-      ;(mobileMenu.current! as HTMLDivElement).addEventListener(
-        'animationend',
-        () => {
-          setClassName('hidden')
-          setIsClicked(false)
-        }
-      )
-      setIsVisible(false)
+  function stickyNav(entries: any) {
+    if (window.screen.availWidth < 600) {
+      headerRef.current.classList.add(style.sticky)
+      mobileMenuRef.current.classList.add(style.sticky)
+      return
+    }
+    const [entry] = entries
+    if (!entry.isIntersecting) {
+      headerRef.current.classList.add(style.sticky)
+      mobileMenuRef.current.classList.add(style.sticky)
     } else {
-      setClassName(style.animate_fall)
-      ;(mobileMenu.current! as HTMLDivElement).addEventListener(
-        'animationend',
-        () => {
-          setClassName('')
-          setIsClicked(false)
-        }
-      )
-      setIsVisible(true)
+      headerRef.current.classList.remove(style.sticky)
     }
   }
 
+  useEffect(() => {
+    const headerObserver = new IntersectionObserver(stickyNav, {
+      root: null,
+      threshold: 0,
+      // rootMargin: '-250px',
+    })
+    headerObserver.observe(document.querySelector('#about') as HTMLDivElement)
+  })
+
+  const [isClicked, setIsClicked] = useState(false)
+
+  useEffect(() => {
+    function close() {
+      if (!isClicked) return
+      setIsClicked(false)
+    }
+    document.body.addEventListener('click', close)
+    window.addEventListener('scroll', close)
+    return () => {
+      document.body.removeEventListener('click', close)
+      window.removeEventListener('scroll', close)
+    }
+  })
+
   return (
     <>
-      <header className={style.header}>
-        <div className="container">
-          <nav className={style.desktop_nav}>
-            <Menu />
-          </nav>
-          <div
-            className={style.mobile_nav}
-            onClick={isClicked ? undefined : onMenuClick}
-          >
-            <Icon
-              icon={menuIcon}
-              style={{ color: '#ffffff', fontSize: '30px' }}
-            />
+      <div className={`${style.header__wrapper}`} ref={headerWrapperRef}>
+        <header className={`${style.header}`} ref={headerRef}>
+          <div className="container">
+            <nav className={style.desktop_nav}>
+              <Menu />
+            </nav>
+            <div className={style.mobile_nav}>
+              <div>
+                <img
+                  src="/images/icons/menu-icon.svg"
+                  onClick={() => setIsClicked(!isClicked)}
+                  ref={IconRef}
+                  className={`${style.icon__wrapper} ${
+                    isClicked ? style.active : ''
+                  }`}
+                />
+              </div>
+            </div>
           </div>
-        </div>
-      </header>
-      <div className={style.mobile_menu}>
-        <Menu mobileMenu={mobileMenu} classEl={className} />
+        </header>
+      </div>
+      <div
+        className={`${style.mobile_menu} ${
+          isClicked ? style.active : 'hidden'
+        }`}
+        ref={mobileMenuRef}
+      >
+        <Menu />
       </div>
     </>
   )

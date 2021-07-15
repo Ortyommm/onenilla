@@ -1,4 +1,4 @@
-import React, { LegacyRef, useRef } from 'react'
+import React, { useRef } from 'react'
 import style from './Play.module.scss'
 
 export default ({

@@ -3,23 +3,20 @@ import Header from './components/Header/Header'
 import About from './components/About/About'
 import Status from './components/Status/Status'
 import Play from './components/Play/Play'
-
-const players = [
-  { nickname: 'John' },
-  { nickname: 'Phoenixraine' },
-  { nickname: 'Jsalient' },
-  { nickname: 'Jsalient' },
-]
+import { store } from './redux/store'
+import { Provider } from 'react-redux'
 
 const App = () => {
   return (
     <>
-      <Header />
-      <div className="container">
-        <About />
-        <Status players={players} />
-        <Play />
-      </div>
+      <Provider store={store}>
+        <Header />
+        <div className="container">
+          <About />
+          <Status />
+          <Play />
+        </div>
+      </Provider>
     </>
   )
 }

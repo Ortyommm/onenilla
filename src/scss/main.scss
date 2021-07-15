@@ -16,9 +16,12 @@ body {
   }
 }
 
+a {
+  cursor: pointer;
+}
+
 a.link {
   color: $lightBlue;
-  cursor: pointer;
   position: relative;
   &::after {
     content: '';

@@ -16,10 +16,12 @@ export interface ServerDataState {
   players: Players
   online: boolean
   server: Server
+  isFetching: boolean
 }
 
 export interface DispatchFunctions {
   setDataAC: Function
+  toggleIsFetchingAC: Function
 }
 
 const initialState = {
@@ -32,6 +34,7 @@ const initialState = {
   server: {
     name: '',
   },
+  isFetching: false,
 }
 
 interface FetchDataActionCreator {
@@ -45,13 +48,29 @@ interface FetchDataActionCreator {
   }
 }
 
+interface IsFetchingPayload {
+  isFetching: boolean
+}
+
+interface IsFetching {
+  readonly type: string
+  payload: {
+    data: {
+      isFetching: boolean
+    }
+  }
+}
+
 export function fetchDataReducer(
   state = initialState,
-  action: FetchDataActionCreator
+  action: FetchDataActionCreator & IsFetching
 ) {
   switch (action.type) {
     case 'SET_DATA':
       return { ...state, ...action.payload.data }
+    case 'TOGGLE_IS_FETCHING':
+      const newState = { ...state, ...action.payload }
+      return newState
     default:
       return state
   }
@@ -59,5 +78,10 @@ export function fetchDataReducer(
 
 export const setDataAC = (payload: FetchDataActionCreator) => ({
   type: 'SET_DATA',
+  payload,
+})
+
+export const toggleIsFetchingAC = (payload: IsFetchingPayload) => ({
+  type: 'TOGGLE_IS_FETCHING',
   payload,
 })

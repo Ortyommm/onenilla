@@ -9,13 +9,16 @@ import {
   ServerDataState,
   DispatchFunctions,
   setDataAC,
+  toggleIsFetchingAC,
 } from '../../redux/fetchServerDataReducer'
 
 const Status = ({
   players,
   online,
   server,
+  isFetching,
   setDataAC,
+  toggleIsFetchingAC,
 }: ServerDataState & DispatchFunctions) => {
   let playersArr
   if (players) {
@@ -38,9 +41,13 @@ const Status = ({
   }
 
   useEffect(() => {
+    toggleIsFetchingAC({ isFetching: true })
     axios
       .get('https://mcapi.us/server/status?ip=onenilla.joinserver.xyz')
-      .then((result) => setDataAC(result))
+      .then((result) => {
+        setDataAC(result)
+        toggleIsFetchingAC({ isFetching: false })
+      })
   }, [])
 
   function createMessage() {
@@ -64,6 +71,7 @@ const Status = ({
     }
     const serverInfo = server.name.split(' ')
     const version = serverInfo[serverInfo.length - 1]
+    if (isFetching) return 'Данные уточняются...'
     if (online)
       return (
         <span>
@@ -100,7 +108,7 @@ const Status = ({
             />
           </div>
           <div className={style.players_right} style={{ letterSpacing: '1px' }}>
-            {online ? 'online' : 'offline'}
+            {isFetching ? 'Данные грузятся...' : online ? 'online' : 'offline'}
             <div
               className={`${style.circle} ${online ? style.online : ''}`}
             ></div>
@@ -118,6 +126,9 @@ const mapStateToProps = (state: { serverData: ServerDataState }) => ({
   players: state.serverData.players,
   online: state.serverData.online,
   server: state.serverData.server,
+  isFetching: state.serverData.isFetching,
 })
 
-export default connect(mapStateToProps, { setDataAC })(Status)
+export default connect(mapStateToProps, { setDataAC, toggleIsFetchingAC })(
+  Status
+)

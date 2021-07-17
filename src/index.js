@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import './js/polyfills/IntersectionObserver'
 
 /* import 'raf/polyfill'; */ import './css/index.css'
 import './scss/index.scss'

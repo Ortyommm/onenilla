@@ -69,17 +69,21 @@ const Status = ({
           return `${players.now} игрока`
       }
     }
-    const serverInfo = server.name.split(' ')
-    const version = serverInfo[serverInfo.length - 1]
-    if (isFetching) return 'Данные уточняются...'
-    if (online)
-      return (
-        <span>
-          Сервер сейчас работает, на нём играет {playersCountMessage()}. Версия:{' '}
-          <strong>{version}</strong>
-        </span>
-      )
-    else return `Сервер сейчас выключен.`
+    console.log({ server })
+    if (server.name) {
+      const serverInfo = server.name.split(' ')
+      const version = serverInfo[serverInfo.length - 1]
+      if (isFetching) return 'Данные уточняются...'
+      if (online)
+        return (
+          <span>
+            Сервер сейчас работает, на нём играет {playersCountMessage()}.
+            Версия: <strong>{version}</strong>
+          </span>
+        )
+    }
+
+    return `Сервер сейчас выключен.`
   }
 
   return (

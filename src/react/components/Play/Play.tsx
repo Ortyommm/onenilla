@@ -68,21 +68,21 @@ export default () => {
           <Product
             imgSrc="/images/pics/onenilla-logo.jpg"
             title="Проходка на сервер"
-            price={45}
+            price={75}
             btnText="Начать играть!"
             btnHref="https://vk.com/onenilla?w=product-195910351_4891471%2Fquery"
           />
           <Product
             imgSrc="/images/pics/onenilla-logo-diamonds.png"
             title="Саппорт сервера"
-            price={165}
+            price={145}
             btnText="Поддержать сервер!"
             btnHref="https://vk.com/onenilla?w=product-195910351_5623553%2Fquery"
           />
           <Product
             imgSrc="/images/pics/onenilla-logo-gold.png"
             title="Цветной никнейм"
-            price={35}
+            price={25}
             btnText="Поддержать сервер!"
             btnHref="https://vk.com/onenilla?w=product-195910351_5601028%2Fquery"
           />

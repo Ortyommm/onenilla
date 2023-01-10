@@ -43,7 +43,7 @@ const Status = ({
   useEffect(() => {
     toggleIsFetchingAC({ isFetching: true })
     axios
-      .get('https://mcapi.us/server/status?ip=onenilla.joinserver.xyz')
+      .get('https://mcapi.us/server/status?ip=onenilla.joinserver.ru')
       .then((result) => {
         setDataAC(result)
         toggleIsFetchingAC({ isFetching: false })

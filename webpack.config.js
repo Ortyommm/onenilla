@@ -29,7 +29,7 @@ const config = {
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     watchContentBase: true,
-    host: '192.168.0.110',
+    host: 'localhost',
     inline: true,
     historyApiFallback: true,
     // hot: true

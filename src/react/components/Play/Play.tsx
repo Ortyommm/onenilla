@@ -6,7 +6,7 @@ import copy from 'copy-to-clipboard'
 export default () => {
   const copyMessageRef = useRef() as MutableRefObject<HTMLDivElement>
   function onCopyClick(e: React.MouseEvent) {
-    copy('onenilla.joinserver.xyz')
+    copy('onenilla.joinserver.ru')
     copyMessageRef.current.style.display = 'block'
     setTimeout(() => {
       copyMessageRef.current.style.display = 'none'
@@ -42,7 +42,7 @@ export default () => {
                   className={style.copy_to_clipboard}
                   title="Скопировать адрес"
                 >
-                  onenilla.joinserver.xyz
+                  onenilla.joinserver.ru
                 </strong>
                 <div className={style.copy_message} ref={copyMessageRef}>
                   Вы скопировали адрес!
@@ -68,7 +68,7 @@ export default () => {
           <Product
             imgSrc="/images/pics/onenilla-logo.jpg"
             title="Проходка на сервер"
-            price={75}
+            price={50}
             btnText="Начать играть!"
             btnHref="https://vk.com/onenilla?w=product-195910351_4891471%2Fquery"
           />

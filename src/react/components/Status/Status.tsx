@@ -1,16 +1,11 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import style from './Status.module.scss'
 import Player from './Player'
 import axios from 'axios'
 import { connect } from 'react-redux'
 
-import {
-  ServerDataState,
-  DispatchFunctions,
-  setDataAC,
-  toggleIsFetchingAC,
-} from '../../redux/fetchServerDataReducer'
+import { ServerDataState, DispatchFunctions, setDataAC, toggleIsFetchingAC } from '../../redux/fetchServerDataReducer'
 
 const Status = ({
   players,
@@ -20,34 +15,31 @@ const Status = ({
   setDataAC,
   toggleIsFetchingAC,
 }: ServerDataState & DispatchFunctions) => {
-  let playersArr
+  const [playersContainerAnimationEnd, setPlayersContainerAnimationEnd] = useState(false)
+  const playersContainerRef = useRef<HTMLDivElement>(null)
+
+  let playersArr: JSX.Element[] = []
   if (players) {
-    playersArr = players.sample.map((p) => (
-      <Player nickname={p.name} key={p.name} />
-    ))
+    playersArr = players.sample.map((p) => <Player nickname={p.name} key={p.name + p.id} />)
   }
 
-  const playerNames = useRef() as React.MutableRefObject<HTMLDivElement>
-  const expandRef = useRef() as React.MutableRefObject<HTMLImageElement>
-  let clicked = false
+  const [expanded, setExpanded] = useState(false)
   function onExpandClick(e: React.MouseEvent) {
     if (!online || players.now === 0) return
-    ;(playerNames.current! as HTMLDivElement).classList.toggle(style.active)
-
-    expandRef.current.style.transform = clicked
-      ? 'rotate(0deg)'
-      : 'rotate(-90deg)'
-    clicked = !clicked
+    setExpanded(!expanded)
   }
 
   useEffect(() => {
     toggleIsFetchingAC({ isFetching: true })
-    axios
-      .get('https://mcapi.us/server/status?ip=onenilla.joinserver.ru')
-      .then((result) => {
-        setDataAC(result)
-        toggleIsFetchingAC({ isFetching: false })
-      })
+    axios.get('https://mcapi.us/server/status?ip=onenilla.joinserver.ru').then((result) => {
+      setDataAC(result)
+      toggleIsFetchingAC({ isFetching: false })
+    })
+
+    if (playersContainerRef.current) {
+      playersContainerRef.current.ontransitionstart = () => setPlayersContainerAnimationEnd(false)
+      playersContainerRef.current.ontransitionend = () => setPlayersContainerAnimationEnd(true)
+    }
   }, [])
 
   function createMessage() {
@@ -77,14 +69,15 @@ const Status = ({
       if (online)
         return (
           <span>
-            Сервер сейчас работает, на нём играет {playersCountMessage()}.
-            Версия: <strong>{version}</strong>
+            Сервер сейчас работает, на нём играет {playersCountMessage()}. Версия: <strong>{version}</strong>
           </span>
         )
     }
 
     return `Сервер сейчас выключен.`
   }
+
+  const playersContainerHeight = expanded ? (110 * players.now > 1000 ? 1000 : 110 * players.now) : 0
 
   return (
     <>
@@ -95,11 +88,7 @@ const Status = ({
         </div>
         <div className={style.players}>
           <div className={style.players_left}>
-            <img
-              src="/images/pics/steve-head.jpg"
-              alt="игрок"
-              className={style.player_head}
-            />
+            <img src="/images/pics/steve-head.jpg" alt="игрок" className={style.player_head} />
             <span className={style.players_count}>
               {players.now}/{players.max}
             </span>
@@ -108,17 +97,21 @@ const Status = ({
               src="/images/icons/expand-icon.svg"
               className={style.expand_btn}
               onClick={onExpandClick}
-              ref={expandRef}
+              style={{
+                transform: expanded ? 'rotate(0deg)' : 'rotate(-90deg)',
+              }}
             />
           </div>
           <div className={style.players_right} style={{ letterSpacing: '1px' }}>
-            {isFetching ? 'Данные грузятся...' : online ? 'online' : 'offline'}
-            <div
-              className={`${style.circle} ${online ? style.online : ''}`}
-            ></div>
+            {isFetching ? 'Загрузка...' : online ? 'online' : 'offline'}
+            <div className={`${style.circle} ${online ? style.online : ''}`}></div>
           </div>
         </div>
-        <div className={`${style.player_names}`} ref={playerNames}>
+        <div
+          className={`${style.player_names} ${expanded && playersContainerAnimationEnd ? style.active : ''}`}
+          style={{ height: playersContainerHeight }}
+          ref={playersContainerRef}
+        >
           {playersArr}
         </div>
       </section>
@@ -133,6 +126,4 @@ const mapStateToProps = (state: { serverData: ServerDataState }) => ({
   isFetching: state.serverData.isFetching,
 })
 
-export default connect(mapStateToProps, { setDataAC, toggleIsFetchingAC })(
-  Status
-)
+export default connect(mapStateToProps, { setDataAC, toggleIsFetchingAC })(Status)

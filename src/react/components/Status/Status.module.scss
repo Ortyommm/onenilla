@@ -101,10 +101,10 @@ $playersHeightTablet: 70px;
   background-color: $whiteBlue;
 
   &.active {
-    height: $playersHeight * 3;
+  //  height: $playersHeight * 3;
     overflow-y: auto;
-    @media (max-width: 650px) {
-      height: $playersHeightTablet * 3;
-    }
+    //@media (max-width: 650px) {
+    //  height: $playersHeightTablet * 3;
+    //}
   }
 }

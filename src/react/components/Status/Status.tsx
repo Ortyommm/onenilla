@@ -6,6 +6,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 
 import { ServerDataState, DispatchFunctions, setDataAC, toggleIsFetchingAC } from '../../redux/fetchServerDataReducer'
+import useMediaQuery from '../../hooks/useMediaQuery'
 
 const Status = ({
   players,
@@ -15,15 +16,22 @@ const Status = ({
   setDataAC,
   toggleIsFetchingAC,
 }: ServerDataState & DispatchFunctions) => {
-  const [playersContainerAnimationEnd, setPlayersContainerAnimationEnd] = useState(false)
-  const playersContainerRef = useRef<HTMLDivElement>(null)
-
   let playersArr: JSX.Element[] = []
   if (players) {
     playersArr = players.sample.map((p) => <Player nickname={p.name} key={p.name + p.id} />)
   }
 
+  const playersContainerRef = useRef<HTMLDivElement>(null)
+  const [playersContainerAnimationEnd, setPlayersContainerAnimationEnd] = useState(false)
   const [expanded, setExpanded] = useState(false)
+
+  const playerItemHeight = useMediaQuery('(max-width: 650px)') ? 70 : 110
+  const playersContainerHeight = expanded
+    ? playerItemHeight * players.now > 1000
+      ? 1000
+      : playerItemHeight * players.now
+    : 0
+
   function onExpandClick(e: React.MouseEvent) {
     if (!online || players.now === 0) return
     setExpanded(!expanded)
@@ -61,7 +69,6 @@ const Status = ({
           return `${players.now} игрока`
       }
     }
-    console.log({ server })
     if (server.name) {
       const serverInfo = server.name.split(' ')
       const version = serverInfo[serverInfo.length - 1]
@@ -76,8 +83,6 @@ const Status = ({
 
     return `Сервер сейчас выключен.`
   }
-
-  const playersContainerHeight = expanded ? (110 * players.now > 1000 ? 1000 : 110 * players.now) : 0
 
   return (
     <>
